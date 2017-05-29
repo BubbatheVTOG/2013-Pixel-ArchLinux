@@ -1,5 +1,6 @@
 # Arch Linux for the 2013 Chromebook Pixel
-The Chromebook Pixel (2013) is an iconic piece of hardware. Since it's debut in 2013 I have dreamed of owning one. This last year the 5 years of support from the mothership, Google HQ has stopped. Now you can now buy a Pixel from retailers for a fraction of the price. To me it seemed like the perfect Linux laptop with its great high quality hardware and solid build quality. I know that there are other people out there that are hoping to purchase this hardware and run "normal" Linux on it. So I've decided to make this guide/wiki for other people who are fighting the hardware as much as I have. I will also include copies of my current configuration files in this repository.
+<a href="http://imgur.com/OIyd6iQ"><img src="http://i.imgur.com/OIyd6iQ.jpg" title="Arch Linux on the 2013 Chromebook Pixel" /></a>
+The Chromebook Pixel (2013) is an iconic piece of hardware. Since it's debut in 2013 I have dreamed of owning one. This last year Google has stopped supporting the 2013 Pixel. Now you can now buy a Pixel from retailers for a fraction of the original price. To me it seemed like the perfect Linux laptop with its great high quality hardware and solid build quality. I know that there are other people out there that are hoping to purchase this hardware and run "normal" Linux on it. So I've decided to make this guide/wiki for other people who are fighting the hardware as much as I have. I will also include copies of my current configuration files in this repository.
 
 ## Put your Pixel into "dev" mode
 These steps are outlined better at the [chromium dev blog](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/chromebook-pixel). But if you are lazy like me, you can just fallow these steps:
@@ -12,7 +13,6 @@ These steps are outlined better at the [chromium dev blog](https://www.chromium.
 7. You can now reboot your pixel and boot whatever Linux based OS you would like.
 
 ## Removing RW Protection
-
 In the current state that you're in by fallowing this guide your Chromebook Pixel will have a nasty habit of "forgetting" about your Linux install if it ever loses power (runs out of battery). If you so choose you can remove the RW protection screw and washer so that you can fully re-write the BIOS of your Pixel to turn it into a "regular" PC. I have removed my RW protection screw, but the binary files hosted at [johnlewis.ie](https://johnlewis.ie/Chromebook-ROMs/) were not available at the time of this writing. There are also some really exciting stuff going on at [Mr. Chromboox's](https://mrchromebox.tech/#home) site with EFI booting, but the 2013 Pixel is marked as "experimental", and further research showed that not only was it [not fully functional](https://www.reddit.com/r/chromeos/comments/5rx4pk/flashing_the_bios_of_the_chromebook_pixel/), but that the 2013 Pixel **IS NOT** fixable via hardware flashing. Because of this I've decided to throw caution to the wind and keep the stock BIOS until I either compile my one myself, or wait for someone more qualified to do a tested and feature rich version. I do plan on flashing one as soon as one seems stable, and will update this wiki after. In the meantime here are the steps that I took for taking apart my Pixel with some pictures.
 
 Glory Shot (I guess?):
@@ -41,7 +41,7 @@ You don't have to, but it is my chosen distribution of Linux.
 From here on this guide will be Arch Linux centric, but other Linux's should work just fine.
 
 ## Necessary Packages (Arch Linux package names)
-Most of these packages are for Arch Linux, but other Linux's also have them available.
+These packages are for Arch Linux, but other Linux's should also have them available.
 1. `intel-ucode` && `linux-headers` This stops *some* of the stupid fan noise.
 2. `acpi` & `acpid` This lets the OS use hardware based events for power managment.
 3. `thermald` This reduces *some* of the stupid fan noise.
@@ -52,7 +52,7 @@ Most of these packages are for Arch Linux, but other Linux's also have them avai
 ## Configuration Stuff
 This section will contain some descriptions about the changes that I have made to improve battery live and reduce heat.
 
-Most of the configuration that I have done are in two places. The first is just the [Arch Wiki Power Management](https://wiki.archlinux.org/index.php/Power_management). Instead of copy-pasting that, or retyping it you should just go there and do all of steps listed.
+Most of the configuration that I have done are in two places. The first is just the [Arch Wiki Power Management](https://wiki.archlinux.org/index.php/Power_management). Instead of copy-pasting that, or retyping it you should just go there and do all of the steps listed.
 
 The second most helpful configuration that I did was tossing a bunch of options at the Linux CMDLINE as listed here:
 1. `nmi_watchdog=0` Disables watchdog, saves some battery.
