@@ -13,7 +13,7 @@ These steps are outlined better at the [chromium dev blog](https://www.chromium.
 
 ## Removing RW Protection
 
-In the current state that you're in by fallowing this guide your Chromebook Pixel will have a nasty habit of "forgetting" about your Linux install if it ever loses power (runs out of battery). If you so choose you can remove the RW protection screw and washer so that you can fully re-write the BIOS of your Pixel to turn it into a "regular" PC. I have done removed my RW protection screw, but the binary files hosted at [johnlewis.ie](https://johnlewis.ie/Chromebook-ROMs/) were not available at the time of this writing. There are also some really exciting stuff going on at [Mr. Chromboox's](https://mrchromebox.tech/#home) site with EFI booting, but the 2013 Pixel is marked as "experimental", and further research showed that not only was it [not fully functional](https://www.reddit.com/r/chromeos/comments/5rx4pk/flashing_the_bios_of_the_chromebook_pixel/), but that the 2013 Pixel **IS NOT** fixable via hardware flashing. Because of this I've decided to throw caution to the wind and keep the stock BIOS until I either compile my one myself, or wait for someone more qualified to do a tested and feature rich version. I do plan on flashing one as soon as one seems stable, and will update this wiki after. In the meantime here are the steps that I took for taking apart my Pixel with some pictures.
+In the current state that you're in by fallowing this guide your Chromebook Pixel will have a nasty habit of "forgetting" about your Linux install if it ever loses power (runs out of battery). If you so choose you can remove the RW protection screw and washer so that you can fully re-write the BIOS of your Pixel to turn it into a "regular" PC. I have removed my RW protection screw, but the binary files hosted at [johnlewis.ie](https://johnlewis.ie/Chromebook-ROMs/) were not available at the time of this writing. There are also some really exciting stuff going on at [Mr. Chromboox's](https://mrchromebox.tech/#home) site with EFI booting, but the 2013 Pixel is marked as "experimental", and further research showed that not only was it [not fully functional](https://www.reddit.com/r/chromeos/comments/5rx4pk/flashing_the_bios_of_the_chromebook_pixel/), but that the 2013 Pixel **IS NOT** fixable via hardware flashing. Because of this I've decided to throw caution to the wind and keep the stock BIOS until I either compile my one myself, or wait for someone more qualified to do a tested and feature rich version. I do plan on flashing one as soon as one seems stable, and will update this wiki after. In the meantime here are the steps that I took for taking apart my Pixel with some pictures.
 
 Glory Shot (I guess?):
 <a href="http://imgur.com/yMDpRAl"><img src="http://i.imgur.com/yMDpRAl.jpg" title="2013 Chromebook Pixel torn apart" /></a>
@@ -52,7 +52,7 @@ Most of these packages are for Arch Linux, but other Linux's also have them avai
 ## Configuration Stuff
 This section will contain some descriptions about the changes that I have made to improve battery live and reduce heat.
 
-Most of the configuration that I have done were in two places. The first is just from the [Arch Wiki Power Management](https://wiki.archlinux.org/index.php/Power_management). Instead of copy-pasting that, or retyping it you should just go there and do all of steps listed there.
+Most of the configuration that I have done are in two places. The first is just the [Arch Wiki Power Management](https://wiki.archlinux.org/index.php/Power_management). Instead of copy-pasting that, or retyping it you should just go there and do all of steps listed.
 
 The second most helpful configuration that I did was tossing a bunch of options at the Linux CMDLINE as listed here:
 1. `nmi_watchdog=0` Disables watchdog, saves some battery.
@@ -73,3 +73,8 @@ The second most helpful configuration that I did was tossing a bunch of options 
 16. `acpi_osi=Linux` Tells ACPI that we are on Linux.
 17. `acpi=force` Force on ACPI.
 18. `acpi_enforce_resources=lax` Enables us to look at some more core temps for the CPU.
+
+Your `/etc/default/grub` should look something like this (this is also easier to copy-paste):
+~~~~
+GRUB_CMDLINE_LINUX_DEFAULT="quiet nmi_watchdog=0 resume=/dev/sda1 elevator=noop i915.enable_fbc=1 i915.semaphores=1 i915.lvds_downclock=1 i915.modeset=1 i915.i915_enable_rc6=7 i915.enable_psr=1 pcie_aspm=force tpm_tis.force=1 tpm_tis.interrupts=0 modprobe.blacklist=uvcvideo,qmi_wwan intel_iommu=on iomem=relaxed acpi_osi=Linux acpi=force acpi_enforce_resources=lax"
+~~~~
