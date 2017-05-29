@@ -3,7 +3,7 @@ The Chromebook Pixel (2013) is an iconic piece of hardware. Since it's debut in 
 
 ## Put your Pixel into "dev" mode
 These steps are outlined better at the [chromium dev blog](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/chromebook-pixel). But if you are lazy like me, you can just fallow these steps:
-1. Hold down the `<ESC> + <REFRESH/F3>` key's and hit power until the keyboard back light comes on.
+1. Hold down the `<ESC>+<REFRESH/F3>` key's and hit power until the keyboard back light comes on.
 2. On the bright warning screen it `<CTRL>+<D>`
 3. Wait for the system to be wiped. (THIS WILL DELETE ALL USER DATA ON THE DEVICE).
 4. Once your Pixel boots, either set it up just enough to get to a browser and hit `<CTRL>+<ALT>+<T>`, OR you can skip setup by pressing `<CTRL>+<ALT>+<FORWARD/F2>` on the setup screen.
@@ -42,14 +42,34 @@ From here on this guide will be Arch Linux centric, but other Linux's should wor
 
 ## Necessary Packages (Arch Linux package names)
 Most of these packages are for Arch Linux, but other Linux's also have them available.
-1. `intel-ucode` This stops *some* of the stupid fan noise.
+1. `intel-ucode` && `linux-headers` This stops *some* of the stupid fan noise.
 2. `acpi` & `acpid` This lets the OS use hardware based events for power managment.
 3. `thermald` This reduces *some* of the stupid fan noise.
 4. `chromebook_keyboard_backlight_driver` Enables use to tweak the keyboard backlight listed in `/sys/class/leds/chromeos::kbd_backlight/`
-5. `cpupower` Lets us set powersave mode using cron.
-6. `tlp` OR `laptop-mode-tools` (plus optional packages. ie: hdparm, ethtool,etc.) Enables lower power usage when acpi says we're on on battery.
+5. `cpupower` Lets us set power save mode using cron.
+6. `tlp` OR `laptop-mode-tools` (plus optional packages. ie: hdparm, ethtool,etc.) Enables lower power usage when ACPI says we're on on battery.
 
 ## Configuration Stuff
+This section will contain some descriptions about the changes that I have made to improve battery live and reduce heat.
 
+Most of the configuration that I have done were in two places. The first is just from the [Arch Wiki Power Management](https://wiki.archlinux.org/index.php/Power_management). Instead of copy-pasting that, or retyping it you should just go there and do all of steps listed there.
 
-
+The second most helpful configuration that I did was tossing a bunch of options at the Linux CMDLINE as listed here:
+1. `nmi_watchdog=0` Disables watchdog, saves some battery.
+2. `resume=/dev/sda1` Resume for suspend-to-disk.
+3. `elevator=noop` Changes the I/O scheduler.
+4. `i915.enable_fbc=1` Enables the Intel frame buffer compression. This helps reduce load on the iGPU.
+5. `i915.semaphores=1` Enables Intel semaphores, which is [this](https://en.wikipedia.org/wiki/Semaphore_(programming).
+6. `i915.lvds_downclock=1` Down clocks the display a bit. Again reducing how much we are using the iGPU.
+7. `i915.modeset=1` Forces kernel mode setting. This is probably redundant, but just in case.
+8. `i915.i915_enable_rc6=7` Enables **ALL** of the low power states for the iGPU.
+9. `i915.enable_psr=1` Enables "Panel Self Refresh". Not sure if the Pixel's display supports this, but this hasn't blown up in my face yet, and if it does support it then we are saving power.
+10. `pcie_aspm=force` Force enables PCIe "Active State Power Management".
+11. `tpm_tis.force=1` Force enables the "Trusted Platform Module" in the kernel. This is needed for suspend and/or hibernation.
+12. `tpm_tis.interrupts=0` Disables interrupts from the TPM.
+13. `modprob.blacklist=uvcvideo,qmi_wwan` Blacklist the camera and the built-in cellular chip (if applicable). This helps save more power.
+14. `intel_iommu=on` Again this is a bit redundant, but it force enables the iGUP. Other options can be read [here](https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt).
+15. `iomem=relaxed` ...does something...I added it for a reason, but re-researching this yealed nothing relevant.
+16. `acpi_osi=Linux` Tells ACPI that we are on Linux.
+17. `acpi=force` Force on ACPI.
+18. `acpi_enforce_resources=lax` Enables us to look at some more core temps for the CPU.
