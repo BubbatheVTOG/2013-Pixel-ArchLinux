@@ -19,10 +19,20 @@ Glory Shot (I guess?):
 <a href="http://imgur.com/yMDpRAl"><img src="http://i.imgur.com/yMDpRAl.jpg" title="2013 Chromebook Pixel torn apart" /></a>
 
 RW Protection Screw:
-<img src="https://photos.google.com/share/AF1QipPNX5-25DWTaBQs7TVNlrqPFzviXwgNSW71tqvpn8OvgTrMIHvNK39IS3k3nvOAcw?key=MmNWZTgyWGxweUVZUldrSjFmRFJvM2plc1V5SE93" alt="RW Protection Screw">
+<a href="http://imgur.com/s6AzHyM"><img src="http://i.imgur.com/s6AzHyM.jpg" title="RW Proteciton Screw" /></a>
+
+### Needed Tools:
+1. Size 0 Philips head screw driver.
+2. **Suction Cup** (NEEDED!)
+3. *mabye a prying tool*
 
 ### Steps Taken:
-1.
+1. Remove the 4 rubber feet.
+2. Unscrew the 4 screws under the feet.
+3. Suction cup the center of the back panel and pull **HARD**. (This avoids prying and bending the back to get around the clips holding the back panel on.)
+4. Locate the RW protection screw on the right side and remove that, and the copper washer.
+5. Push the back panel on.
+6. Replace the 4 screws and the 4 rubber feet.
 
 I have used Mr. Chrombox's script to remove the blindingly bright "developer mode" warning screen. If you have removed your RW protection screw I'd recommend doing the same (for the sake of your eyes).
 
