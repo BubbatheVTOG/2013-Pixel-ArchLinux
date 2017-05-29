@@ -16,10 +16,10 @@ These steps are outlined better at the [chromium dev blog](https://www.chromium.
 In the current state that you're in by fallowing this guide your Chromebook Pixel will have a nasty habit of "forgetting" about your Linux install if it ever loses power (runs out of battery). If you so choose you can remove the RW protection screw and washer so that you can fully re-write the BIOS of your Pixel to turn it into a "regular" PC. I have done this, but the binary files hosted at [johnlewis.ie](https://johnlewis.ie/Chromebook-ROMs/) were not available at the time of this writing. There is some really exciting stuff going on at [Mr. Chromboox's](https://mrchromebox.tech/#home) site with EFI booting, but the 2013 Pixel is marked as "experimental", and further research showed that not only was it [not fully functional](https://www.reddit.com/r/chromeos/comments/5rx4pk/flashing_the_bios_of_the_chromebook_pixel/), but that the 2013 Pixel **IS NOT** fixable via hardware flashing. Because of this I've decided to throw caution to the wind and keep the stock BIOS until I either compile my one myself, or wait for someone more qualified to do a tested and feature rich version. I do plan on flashing one as soon as one seems stable, and will update this wiki after. In the meantime here are the steps that I took for taking apart my Pixel with some pictures.
 
 Glory Shot (I guess):
-![Alt](https://goo.gl/photos/W9kMUeDS9ScgkqtH7 "2013 Chromebook Pixel Full-Open")
+![Alt](://photos.google.com/share/AF1QipPCzF3pFfRhCuRpL_67cpD_WdHvOAkEDVPVUyAyXHJuWc1xwvm1qD5CfnvXrlngIw?key=bk0xRWZOVGlNaWp0WUt5X1oxb0hCaTkxRDhadHJn "2013 Chromebook Pixel Full-Open")
 
 RW Protection Screw:
-![Alt](https://goo.gl/photos/6HPWUgTnRvEjBqij6 "2013 Chromebook Pixel RW Protection Screw")
+![Alt](https://photos.google.com/share/AF1QipPHTb21KiQx96llhPrZvjrc6jLkBtAUVjjCt2GaLZW-uOsBqtvkKW_OKilmFR5DvA?key=V3JmZjd4SzJ6blNQVXYyRW85TEtFU1NNTm92bkpn "2013 Chromebook Pixel RW Protection Screw")
 
 ### Steps Taken:
 1.
