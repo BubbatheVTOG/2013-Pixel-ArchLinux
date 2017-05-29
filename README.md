@@ -25,7 +25,7 @@ Most of these packages are for Arch Linux, but other Linux's also have them avai
 3. `thermald` This reduces *some* of the stupid fan noise.
 4. `chromebook_keyboard_backlight_driver` Enables use to tweak the keyboard backlight listed in `/sys/class/leds/chromeos::kbd_backlight/`
 5. `cpupower` Lets us set powersave mode using cron.
-6. `tlp` OR `laptop-mode-tools` Enables lower power usage when acpi says we on on battery.
+6. `tlp` OR `laptop-mode-tools` (plus optional packages. ie: hdparm, ethtool,etc.) Enables lower power usage when acpi says we're on on battery.
 
 ## Configuration Stuff
 
