@@ -47,12 +47,12 @@ These packages are for Arch Linux, but other Linux's should also have them avail
 1. `intel-ucode` && `linux-headers` This stops *some* of the stupid fan noise.
 2. `acpi` & `acpid` This lets the OS use hardware based events for power managment.
 3. `thermald` This reduces *some* of the stupid fan noise.
-4. `chromebook_keyboard_backlight_driver` Enables use to tweak the keyboard backlight listed in `/sys/class/leds/chromeos::kbd_backlight/`
+4. `chromebook_keyboard_backlight_driver` Enables us to tweak the keyboard backlight listed in `/sys/class/leds/chromeos::kbd_backlight/`
 5. `cpupower` Lets us set power save mode using cron.
 6. `tlp` OR `laptop-mode-tools` (plus optional packages. ie: hdparm, ethtool,etc.) Enables lower power usage when ACPI says we're on on battery.
 
 ## Configuration Stuff
-This section will contain some descriptions about the changes that I have made to improve battery live and reduce heat.
+This section will contain some descriptions about the changes that I have made to improve battery life, reduce heat, and reduce fan noise.
 
 Most of the configuration that I have done are in two places. The first is just the [Arch Wiki Power Management](https://wiki.archlinux.org/index.php/Power_management). Instead of copy-pasting that, or retyping it you should just go there and do all of the steps listed.
 
