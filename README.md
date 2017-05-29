@@ -81,5 +81,5 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet nmi_watchdog=0 resume=/dev/sda1 elevator=noop 
 ~~~~
 
 ## Result
-This is the results of optimizing the Pixel. As you can see I get about an hour or more from the battery than ChromeOS does.
+This is the results of optimizing the Pixel. As you can see I get about an hour more from the battery than ChromeOS does.
 <a href="http://imgur.com/CzhMoai"><img src="http://i.imgur.com/CzhMoai.png" title="Pixel Battery Life" /></a>
