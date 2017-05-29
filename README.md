@@ -59,7 +59,7 @@ The second most helpful configuration that I did was tossing a bunch of options 
 2. `resume=/dev/sda1` Resume for suspend-to-disk.
 3. `elevator=noop` Changes the I/O scheduler.
 4. `i915.enable_fbc=1` Enables the Intel frame buffer compression. This helps reduce load on the iGPU.
-5. `i915.semaphores=1` Enables Intel semaphores, which is [this](https://en.wikipedia.org/wiki/Semaphore_(programming).
+5. `i915.semaphores=1` Enables Intel semaphores, which is [this](https://en.wikipedia.org/wiki/Semaphore_(programming)).
 6. `i915.lvds_downclock=1` Down clocks the display a bit. Again reducing how much we are using the iGPU.
 7. `i915.modeset=1` Forces kernel mode setting. This is probably redundant, but just in case.
 8. `i915.i915_enable_rc6=7` Enables **ALL** of the low power states for the iGPU.
