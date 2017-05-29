@@ -63,18 +63,17 @@ The second most helpful configuration that I did was tossing a bunch of options 
 6. `i915.lvds_downclock=1` Down clocks the display a bit. Again reducing how much we are using the iGPU.
 7. `i915.modeset=1` Forces kernel mode setting. This is probably redundant, but just in case.
 8. `i915.i915_enable_rc6=7` Enables **ALL** of the low power states for the iGPU.
-9. `i915.enable_psr=1` Enables "Panel Self Refresh". Not sure if the Pixel's display supports this, but this hasn't blown up in my face yet, and if it does support it then we are saving power.
-10. `pcie_aspm=force` Force enables PCIe "Active State Power Management".
-11. `tpm_tis.force=1` Force enables the "Trusted Platform Module" in the kernel. This is needed for suspend and/or hibernation.
-12. `tpm_tis.interrupts=0` Disables interrupts from the TPM.
-13. `modprob.blacklist=uvcvideo,qmi_wwan` Blacklist the camera and the built-in cellular chip (if applicable). This helps save more power.
-14. `intel_iommu=on` Again this is a bit redundant, but it force enables the iGUP. Other options can be read [here](https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt).
-15. `iomem=relaxed` ...does something...I added it for a reason, but re-researching this yealed nothing relevant.
-16. `acpi_osi=Linux` Tells ACPI that we are on Linux.
-17. `acpi=force` Force on ACPI.
-18. `acpi_enforce_resources=lax` Enables us to look at some more core temps for the CPU.
+9. `pcie_aspm=force` Force enables PCIe "Active State Power Management".
+10. `tpm_tis.force=1` Force enables the "Trusted Platform Module" in the kernel. This is needed for suspend and/or hibernation.
+11. `tpm_tis.interrupts=0` Disables interrupts from the TPM.
+12. `modprob.blacklist=uvcvideo,qmi_wwan` Blacklist the camera and the built-in cellular chip (if applicable). This helps save more power.
+13. `intel_iommu=on` Again this is a bit redundant, but it force enables the iGUP. Other options can be read [here](https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt).
+14. `iomem=relaxed` ...does something...I added it for a reason, but re-researching this yealed nothing relevant.
+15. `acpi_osi=Linux` Tells ACPI that we are on Linux.
+16. `acpi=force` Force on ACPI.
+17. `acpi_enforce_resources=lax` Enables us to look at some more core temps for the CPU.
 
 Your `/etc/default/grub` should look something like this (this is also easier to copy-paste):
 ~~~~
-GRUB_CMDLINE_LINUX_DEFAULT="quiet nmi_watchdog=0 resume=/dev/sda1 elevator=noop i915.enable_fbc=1 i915.semaphores=1 i915.lvds_downclock=1 i915.modeset=1 i915.i915_enable_rc6=7 i915.enable_psr=1 pcie_aspm=force tpm_tis.force=1 tpm_tis.interrupts=0 modprobe.blacklist=uvcvideo,qmi_wwan intel_iommu=on iomem=relaxed acpi_osi=Linux acpi=force acpi_enforce_resources=lax"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet nmi_watchdog=0 resume=/dev/sda1 elevator=noop i915.enable_fbc=1 i915.semaphores=1 i915.lvds_downclock=1 i915.modeset=1 i915.i915_enable_rc6=7 pcie_aspm=force tpm_tis.force=1 tpm_tis.interrupts=0 modprobe.blacklist=uvcvideo,qmi_wwan intel_iommu=on iomem=relaxed acpi_osi=Linux acpi=force acpi_enforce_resources=lax"
 ~~~~
