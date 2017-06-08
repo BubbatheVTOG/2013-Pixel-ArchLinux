@@ -100,6 +100,7 @@ WantedBy=multi-user.target
 </pre>
 
 Then of course:
+
 `sudo systemctl enable powertop.service`
 
 `sudo systemctl	start powertop.service`
