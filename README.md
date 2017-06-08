@@ -80,6 +80,30 @@ Your `/etc/default/grub` should look something like this (this is also easier to
 GRUB_CMDLINE_LINUX_DEFAULT="quiet nmi_watchdog=0 resume=/dev/sda1 elevator=noop i915.enable_fbc=1 i915.semaphores=1 i915.lvds_downclock=1 i915.modeset=1 i915.i915_enable_rc6=7 pcie_aspm=force tpm_tis.force=1 tpm_tis.interrupts=0 modprobe.blacklist=uvcvideo,qmi_wwan intel_iommu=on iomem=relaxed acpi_osi=Linux acpi=force acpi_enforce_resources=lax"
 ~~~~
 
+## Auto Power Optimize
+This is a real nice suggestion I that recently found on the [libreboot.org](https://libreboot.org/docs/misc/#high-pitched-whining-noise-on-idle-in-parabola) site (How did I end up there?). It automatically "fixes" the tunables section powertop.
+
+Place this file at `/etc/systemd/system/multi-user.target.wants/powertop.service`:
+<pre>
+[Unit]
+Description=Powertop tunings
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/powertop --auto-tune
+# "powertop --auto-tune" still needs a terminal for some reason. Possibly a bug?
+Environment="TERM=xterm"
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+Then of course:
+`sudo systemctl enable powertop.service`
+`sudo systemctl	start powerttop.service`
+
+
 ## Result
 This is the results of optimizing the Pixel. As you can see I get about an hour more from the battery than ChromeOS does.
 <a href="http://imgur.com/CzhMoai"><img src="http://i.imgur.com/CzhMoai.png" title="Pixel Battery Life" /></a>
