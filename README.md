@@ -99,7 +99,7 @@ Environment="TERM=xterm"
 WantedBy=multi-user.target
 </pre>
 
-Then of course:
+Then, of course:
 
 `sudo systemctl enable powertop.service`
 
