@@ -83,7 +83,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet nmi_watchdog=0 resume=/dev/sda1 elevator=noop 
 ## Auto Power Optimize
 This is a real nice suggestion I that recently found on the [libreboot.org](https://libreboot.org/docs/misc/#high-pitched-whining-noise-on-idle-in-parabola) site (How did I end up there?). It automatically "fixes" the tunables section from powertop on boot.
 
-Place this file at `/etc/systemd/system/multi-user.target.wants/powertop.service`:
+Place this file at `/etc/systemd/system/powertop.service`:
 <pre>
 [Unit]
 Description=Powertop tunings
