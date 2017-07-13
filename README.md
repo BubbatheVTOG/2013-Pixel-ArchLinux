@@ -105,6 +105,11 @@ Then, of course:
 
 `sudo systemctl	start powertop.service`
 
+I have also added these options to the `root` users crontab to optimize things a bit better on boot
+<pre>
+@reboot /usr/bin/cpupower frequency-set -g powersave
+@reboot a+w /sys/class/leds/chromeos::kbd_backlight/brightness
+</pre>
 
 ## Result
 This is the results of optimizing the Pixel. As you can see I get about an hour more from the battery than ChromeOS does.
