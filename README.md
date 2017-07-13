@@ -108,6 +108,7 @@ Then, of course:
 I have also added these options to the `root` users crontab to optimize things a bit better on boot
 <pre>
 @reboot /usr/bin/cpupower frequency-set -g powersave
+#This next option lets me change kb_backlight via vim (check out my /simple.vim/NOTsimple.nvimrc for details)
 @reboot a+w /sys/class/leds/chromeos::kbd_backlight/brightness
 </pre>
 
