@@ -110,6 +110,9 @@ I have also added these options to the `root` users crontab to optimize things a
 @reboot /usr/bin/cpupower frequency-set -g powersave
 #This next option lets me change kb_backlight via vim (check out my /simple.vim/NOTsimple.nvim for details)
 @reboot a+w /sys/class/leds/chromeos::kbd_backlight/brightness
+#These prevent instanious wakeup issues with systemctl syspend.
+@reboot /usr/bin/echo TPAD > /proc/acpi/wakeup
+@reboot /usr/bin/echo TSCR > /proc/acpi/wakeup
 </pre>
 
 ## Result
