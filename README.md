@@ -115,6 +115,20 @@ I have also added these options to the `root` users crontab to optimize things a
 @reboot /usr/bin/echo TSCR > /proc/acpi/wakeup
 </pre>
 
+For the 2015 Pixel it is necessary to reload the touch devices drivers after sleep resume. This can be achieved by (manually) installing `mxt-app` from the AUR and removing the dependency for pandoc, then installing the `samus-scripts` package. Then place this file at `/etc/syspend/system/touch-devices-resume.service`
+<pre>
+[Unit]
+Description=Reloads the touch devices driver after resume.
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/enable-touch > /dev/null 2>&1
+
+[Install]
+WantedBy=suspend.target
+</pre>
+
 ## Result
 This is the results of optimizing the Pixel. As you can see I get about an hour more from the battery than ChromeOS does.
 <a href="http://imgur.com/CzhMoai"><img src="http://i.imgur.com/CzhMoai.png" title="Pixel Battery Life" /></a>
