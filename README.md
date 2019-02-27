@@ -113,6 +113,8 @@ I have also added these options to the `root` users crontab to optimize things a
 #These prevent instanious wakeup issues with systemctl syspend.
 @reboot /usr/bin/echo TPAD > /proc/acpi/wakeup
 @reboot /usr/bin/echo TSCR > /proc/acpi/wakeup
+@reboot /usr/bin/echo 1 > /sys/module/snd_hda_intel/parameters/power_save
+@reboot /usr/bin/echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
 </pre>
 
 For the 2015 Pixel it is necessary to reload the touch devices drivers after sleep resume. This can be achieved by (manually) installing `mxt-app` from the AUR and removing the dependency for pandoc, then installing the `samus-scripts` package. Then place this file at `/etc/syspend/system/touch-devices-resume.service`
